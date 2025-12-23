@@ -1,3 +1,4 @@
+Methodology
 This project implements a Machine Learning–Based Support System for Predictive Agriculture and Resource Optimization designed to assist farmers in the Dhule region. The system analyzes soil, climate, and historical agricultural data to provide accurate predictions and data-driven recommendations.
 
 🧠 Machine Learning Techniques
