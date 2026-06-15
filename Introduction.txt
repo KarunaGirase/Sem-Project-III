@@ -1,0 +1,25 @@
+Problem Statement
+
+Agriculture in the Dhule district of Maharashtra is highly dependent on monsoon rainfall, soil fertility, and climatic conditions. Farmers in this drought-prone region face significant challenges such as unpredictable rainfall patterns, poor soil nutrient balance, inefficient use of fertilizers and water, and lack of timely technical guidance. Most agricultural decisions—such as crop selection, fertilizer application, and yield estimation—are still based on traditional knowledge, past experience, and manual observation rather than scientific analysis.
+
+The absence of an integrated, data-driven decision support system often leads to incorrect crop selection, excessive or insufficient fertilizer usage, low crop productivity, increased production costs, and financial losses for farmers. With changing climatic conditions and increasing pressure on natural resources, there is a critical need for a predictive and intelligent system that can analyze soil, weather, and historical agricultural data to support informed decision-making.
+
+Hence, this project aims to develop a Machine Learning-Based Support System for Predictive Agriculture and Resource Optimization that provides accurate crop recommendations, fertilizer suggestions, and crop yield predictions specifically tailored for the Dhule district.
+
+Objectives
+
+The primary objectives of the proposed system are:
+
+To develop a machine learning-based crop recommendation system that suggests the most suitable crop based on soil parameters (N, P, K, pH) and climatic conditions.
+
+To predict crop yield using regression techniques by analyzing soil nutrients, rainfall patterns, temperature, and historical yield data.
+
+To recommend optimal fertilizer usage based on soil nutrient levels and crop-specific requirements, ensuring balanced nutrient management.
+
+To analyze rainfall and climatic data and study their impact on crop productivity in the Dhule district.
+
+To optimize agricultural resource usage, particularly water and fertilizers, to reduce wastage and production costs.
+
+To provide a web-based decision support platform that enables farmers and agricultural stakeholders to access data-driven insights easily.
+
+To promote sustainable and precision agriculture practices using machine learning techniques.
