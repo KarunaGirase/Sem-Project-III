@@ -245,13 +245,3 @@ Returns:
 
 ---
 
-## 👩‍💻 Author
-
-Karuna Girase
-
-B.Tech (Data Science)
-
-Machine Learning | Data Science | AI Enthusiast
-
-```
-```
