@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🌾 Crop Management System</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- 🌱 Header -->
+  <header class="header text-white py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h2 class="mb-0"><i class="bi bi-tree-fill me-2"></i>🌾 Crop Management System</h2>
+      <nav>
+        <a href="#home" class="text-white text-decoration-none me-4">Home</a>
+        <a href="#predict" class="text-white text-decoration-none">Predict</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 🌍 Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>Optimize Your Farming Decisions</h1>
+      <p class="lead">Get instant insights into the best crop, yield estimation, and fertilizer recommendations based on your field data.</p>
+      <a href="#predict" class="btn btn-light btn-lg">Start Prediction</a>
+    </div>
+  </section>
+
+  <!-- 📋 Prediction Form -->
+  <section id="predict" class="py-5">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-center mb-3"><i class="bi bi-graph-up-arrow text-success me-2"></i>Crop Prediction Form</h3>
+          <p class="text-center text-muted mb-4">Enter your field details to get crop, yield, and fertilizer recommendations</p>
+
+          <form id="cropForm" class="row g-4">
+            <div class="col-md-6 form-group">
+              <label class="form-label">Village</label>
+              <input id="Villages" class="form-control" value="Village_A" required>
+              <i class="bi bi-house-door"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Year</label>
+              <input id="Year" type="number" class="form-control" value="2025" min="2000" max="2100" required>
+              <i class="bi bi-calendar"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Avg Temperature (°C)</label>
+              <input id="Avg_Temp_C" type="number" step="0.1" class="form-control" value="25.0" min="-50" max="60" required>
+              <i class="bi bi-thermometer-half"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Avg Humidity (%)</label>
+              <input id="Avg_Humidity_Percent" type="number" step="0.1" class="form-control" value="60.0" min="0" max="100" required>
+              <i class="bi bi-moisture"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Soil Type</label>
+              <select id="Soil_Type" class="form-select" required>
+                <option>Deep Black Soil</option>
+                <option>Medium Black Soil</option>
+                <option>Light Black Soil</option>
+                <option>Mixed Black Soil</option>
+              </select>
+              <i class="bi bi-tree"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Soil pH</label>
+              <input id="Soil_pH" type="number" step="0.1" class="form-control" value="6.5" min="0" max="14" required>
+              <i class="bi bi-droplet"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Crop Season</label>
+              <select id="Crop_Season" class="form-select" required>
+                <option>Kharif</option>
+                <option>Rabi</option>
+                <option>Summer</option>
+              </select>
+              <i class="bi bi-sun"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Soil N (kg/ha)</label>
+              <input id="Soil_N_kg_ha" type="number" class="form-control" value="200" min="0" required>
+              <i class="bi bi-nut"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Soil P (kg/ha)</label>
+              <input id="Soil_P_kg_ha" type="number" class="form-control" value="30" min="0" required>
+              <i class="bi bi-nut"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Soil K (kg/ha)</label>
+              <input id="Soil_K_kg_ha" type="number" class="form-control" value="200" min="0" required>
+              <i class="bi bi-nut"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Rainfall (mm)</label>
+              <input id="Rainfall_mm" type="number" class="form-control" value="500" min="0" required>
+              <i class="bi bi-cloud-rain"></i>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label class="form-label">Farm Area (ha)</label>
+              <input id="Farm_Area_ha" type="number" step="0.1" class="form-control" value="1.0" min="0.1" required>
+              <i class="bi bi-geo-alt"></i>
+            </div>
+
+            <div class="col-12 mt-4">
+              <button type="button" class="btn btn-success w-100" onclick="predict()">Predict</button>
+            </div>
+          </form>
+
+          <div id="loading" class="loading">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Analyzing your data...</p>
+          </div>
+
+          <div id="result" class="mt-4" style="display:none;">
+            <div class="result-box">
+              <h5><i class="bi bi-check-circle-fill text-success me-2"></i>Prediction Results</h5>
+              <p><strong>Crop Name:</strong> <span id="cropName">—</span></p>
+              <p><strong>Predicted Yield:</strong> <span id="predictedYield">—</span></p>
+              <p><strong>Fertilizer Type:</strong> <span id="fertilizerType">—</span></p>
+              <p><strong>Fertilizer Quantity:</strong> <span id="fertilizerQty">—</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🌿 Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Crop Management System | Designed by <strong>Team AgriTech</strong></p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    async function predict() {
+      const data = {
+        Villages: document.getElementById('Villages').value,
+        Year: parseInt(document.getElementById('Year').value),
+        Avg_Temp_C: parseFloat(document.getElementById('Avg_Temp_C').value),
+        Avg_Humidity_Percent: parseFloat(document.getElementById('Avg_Humidity_Percent').value),
+        Soil_Type: document.getElementById('Soil_Type').value,
+        Soil_pH: parseFloat(document.getElementById('Soil_pH').value),
+        Crop_Season: document.getElementById('Crop_Season').value,
+        Soil_N_kg_ha: parseFloat(document.getElementById('Soil_N_kg_ha').value),
+        Soil_P_kg_ha: parseFloat(document.getElementById('Soil_P_kg_ha').value),
+        Soil_K_kg_ha: parseFloat(document.getElementById('Soil_K_kg_ha').value),
+        Rainfall_mm: parseFloat(document.getElementById('Rainfall_mm').value),
+        Farm_Area_ha: parseFloat(document.getElementById('Farm_Area_ha').value)
+      };
+
+      document.getElementById("loading").style.display = "block";
+      document.getElementById("result").style.display = "none";
+
+      try {
+        const resp = await fetch('http://127.0.0.1:5000/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (!resp.ok) throw new Error('Server error ' + resp.status);
+        const res = await resp.json();
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("result").style.display = "block";
+
+        document.getElementById("cropName").textContent = res["Predicted Crop"] || "N/A";
+        document.getElementById("predictedYield").textContent = res["Predicted Yield (kg/ha)"]
+          ? res["Predicted Yield (kg/ha)"].toFixed(2) + " kg/ha" : "N/A";
+        document.getElementById("fertilizerType").textContent = res["Recommended Fertilizer"] || "N/A";
+        document.getElementById("fertilizerQty").textContent = res["Fertilizer Quantity (kg/ha)"]
+          ? res["Fertilizer Quantity (kg/ha)"].toFixed(2) + " kg/ha" : "N/A";
+      } catch (e) {
+        document.getElementById("loading").style.display = "none";
+        alert('Prediction failed: ' + e);
+        console.error(e);
+      }
+    }
+  </script>
+</body>
+</html>
